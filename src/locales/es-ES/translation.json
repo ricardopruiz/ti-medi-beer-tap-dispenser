@@ -1,0 +1,13 @@
+{
+  "login": {
+    "title": "Ti-medi dispensadores de cervezas",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "access-denied": "El usuario o la contraseña son incorrectos. Por favor, inténtelo de nuevo",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión"
+  },
+  "dispensers": {
+    "create-dispenser": "Crear nuevo dispensador de cerveza"
+  }
+}
