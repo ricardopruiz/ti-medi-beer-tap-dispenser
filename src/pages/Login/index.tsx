@@ -33,6 +33,8 @@ const Login = () => {
       .finally(() => setProcessingLogin(false));
   };
 
+  const isLoginEmpty = username.length === 0 && password.length === 0;
+
   useEffect(() => {
     setIsError(false);
   }, [username, password]);
@@ -55,7 +57,7 @@ const Login = () => {
       {isError && <ErrorMessage>{t("login.access-denied")}</ErrorMessage>}
       <FormButton
         loading={processingLogin}
-        disabled={processingLogin || isError}
+        disabled={processingLogin || isError || isLoginEmpty}
         onClick={handleLogin}
       >
         {t("login.login")}

@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-  border: 1px solid gray;
+  background-color: ${({ theme }) => theme.colors.primary.main};
+  border-radius: ${({ theme }) => theme.borderRadius.roundLight};
+  box-shadow: ${({ theme }) => theme.elevations.small};
+
   height: 2rem;
-  border-radius: 16px;
   padding: 0.25rem 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
