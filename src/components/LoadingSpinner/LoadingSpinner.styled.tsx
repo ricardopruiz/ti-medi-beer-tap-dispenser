@@ -19,7 +19,7 @@ export const StyledLoading = styled.div.attrs({
 
 export const StyledIcon = styled(LoadingSpinnerIcon)<StyledIconProps>`
   font-size: ${({ type }) => (type === "innerSpinner" ? "1rem" : "4rem")};
-  color: red;
+  color: ${({ theme }) => theme.colors.text.contrast};
 
   animation: spin 500ms linear infinite;
 
