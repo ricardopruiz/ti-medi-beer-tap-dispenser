@@ -1,0 +1,13 @@
+{
+  "login": {
+    "title": "Ti-medi beer tap dispensers",
+    "username": "Username",
+    "password": "Password",
+    "access-denied": "The user or password provided are incorrect. Please try again",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "dispensers": {
+    "create-dispenser": "Create new Beer Dispenser"
+  }
+}
