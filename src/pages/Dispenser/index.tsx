@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { getLoggedUser, logout } from "../../services/login";
-import FormButton from "../../components/FormButton";
+import FormButton from "../../components/Button";
 import { RoutePath } from "../../Routing/routes";
 
 const DispenserDetail = () => {

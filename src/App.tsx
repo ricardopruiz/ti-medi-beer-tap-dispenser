@@ -1,12 +1,12 @@
 import "./App.css";
 import AppRoutes from "./Routing/AppRoutes";
-import AppThemeProvider from "./theme/AppThemeProvider";
+import Providers from "./Providers";
 
 function App() {
   return (
-    <AppThemeProvider>
+    <Providers>
       <AppRoutes />
-    </AppThemeProvider>
+    </Providers>
   );
 }
 
