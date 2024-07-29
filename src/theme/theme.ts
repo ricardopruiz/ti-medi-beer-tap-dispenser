@@ -13,6 +13,11 @@ const theme = {
       default: colors.black,
       contrast: colors.white,
     },
+    disabled: {
+      main: colors.gray,
+      light: colors.grayLight,
+      dark: colors.grayDark,
+    },
     status: {
       danger: colors.red,
       correct: colors.green,
@@ -20,16 +25,17 @@ const theme = {
       warning: colors.yellow,
     },
   },
-  device: {
-    mobile: breakpoints.small,
-    desktop: breakpoints.big,
+  breakpoint: {
+    tablet: breakpoints.tablet,
+    desktop: breakpoints.desktop,
   },
   elevations: {
     button: elevations.medium,
     form: elevations.small,
   },
   borderRadius: {
-    round: "16px",
+    round: "50%",
+    roundHard: "16px",
     roundLight: "8px",
     flat: "none",
   },

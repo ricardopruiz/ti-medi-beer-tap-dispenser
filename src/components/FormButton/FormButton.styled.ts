@@ -11,4 +11,11 @@ export const StyledButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.disabled.main};
+    color: ${({ theme }) => theme.colors.disabled.dark};
+
+    cursor: not-allowed;
+  }
 `;

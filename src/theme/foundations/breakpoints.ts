@@ -1,6 +1,6 @@
 const breakpoints = {
-  small: "600x",
-  big: "900px",
+  tablet: "481px",
+  desktop: "1025px",
 };
 
 export default breakpoints;
