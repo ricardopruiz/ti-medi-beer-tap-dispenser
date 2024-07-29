@@ -5,6 +5,12 @@
 
 html,
 body,
+#root {
+  min-height: 100dvh;
+}
+
+html,
+body,
 div,
 span,
 applet,
