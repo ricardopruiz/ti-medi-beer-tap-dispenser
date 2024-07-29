@@ -1,15 +1,15 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "../../utils/testUtils";
 import { vi, it, describe, expect } from "vitest";
 import { faker } from "@faker-js/faker";
 
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
-import FormButton from ".";
+import Button from ".";
 
-describe("FormButton", () => {
+describe("Button", () => {
   it("shows a form button", () => {
-    render(<FormButton onClick={vi.fn()}>test</FormButton>);
+    render(<Button onClick={vi.fn()}>test</Button>);
 
     const button = screen.getByRole("button");
     expect(button).toBeInTheDocument();
@@ -17,7 +17,7 @@ describe("FormButton", () => {
 
   it("calls a callback when button is clicked", async () => {
     const callback = vi.fn();
-    render(<FormButton onClick={callback}>test</FormButton>);
+    render(<Button onClick={callback}>test</Button>);
 
     const button = screen.getByRole("button");
 
@@ -28,7 +28,7 @@ describe("FormButton", () => {
   });
 
   it("displays the button in loading mode", () => {
-    render(<FormButton loading>test</FormButton>);
+    render(<Button loading>test</Button>);
 
     const spinner = screen.getByLabelText("loading-spinner-container");
 
@@ -38,7 +38,7 @@ describe("FormButton", () => {
   it("displays the children content inside the button", () => {
     const child = faker.word.words(4);
 
-    render(<FormButton>{child}</FormButton>);
+    render(<Button>{child}</Button>);
 
     const getChild = screen.getByText(child);
 
@@ -46,7 +46,7 @@ describe("FormButton", () => {
   });
 
   it("displays the button on disabled mode", () => {
-    render(<FormButton disabled>test</FormButton>);
+    render(<Button disabled>test</Button>);
 
     const button = screen.getByRole("button");
 

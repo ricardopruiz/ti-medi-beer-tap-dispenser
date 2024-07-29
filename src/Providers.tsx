@@ -1,13 +1,13 @@
 import { ThemeProvider } from "styled-components";
-import theme from "./theme";
+import theme from "./theme/theme";
 import { ReactNode } from "react";
 
-type ThemeProviderProps = {
+type ProvidersProps = {
   children: ReactNode;
 };
 
-const AppThemeProvider = ({ children }: ThemeProviderProps) => {
+const Providers = ({ children }: ProvidersProps) => {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
-export default AppThemeProvider;
+export default Providers;

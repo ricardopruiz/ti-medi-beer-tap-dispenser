@@ -29,7 +29,7 @@ export const StyledLogin = styled.div`
   }
 `;
 
-export const StyledForm = styled.div`
+export const StyledForm = styled.form`
   display: grid;
   grid-template-rows: auto;
   gap: 3rem;

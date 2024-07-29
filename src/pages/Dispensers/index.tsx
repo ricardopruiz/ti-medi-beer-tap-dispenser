@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import FormButton from "../../components/FormButton";
+import FormButton from "../../components/Button";
 import { getLoggedUser, logout } from "../../services/login";
 import { RoutePath } from "../../Routing/routes";
 

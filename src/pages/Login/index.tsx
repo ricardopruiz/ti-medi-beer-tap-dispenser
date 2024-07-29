@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Input from "../../components/Input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   StyledForm,
   StyledFormButtonContainer,
@@ -9,7 +9,7 @@ import {
   StyledLoginWrapper,
   StyledVerticalBlock,
 } from "./Login.styled";
-import FormButton from "../../components/FormButton";
+import Button from "../../components/Button";
 import { loginUser } from "../../services/login";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -17,20 +17,29 @@ import { RoutePath } from "../../Routing/routes";
 import Avatar from "../../components/Avatar";
 import Beer from "../../components/Icons/BeerIcon";
 import useBreakpoints from "../../hooks/useBreakpoints";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+type FormData = {
+  username: string;
+  password: string;
+};
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm<FormData>();
   const { t } = useTranslation();
   const { isDesktop } = useBreakpoints();
   const navigate = useNavigate();
 
   const { state: locationState } = useLocation();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [processingLogin, setProcessingLogin] = useState(false);
-  const [isError, setIsError] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin: SubmitHandler<FormData> = ({ username, password }) => {
     setProcessingLogin(true);
     loginUser({ username, password })
       .then(() => {
@@ -41,15 +50,13 @@ const Login = () => {
           navigate(RoutePath.ADMIN);
         }
       })
-      .catch(() => setIsError(true))
+      .catch(() =>
+        setError("root", { type: "custom", message: t("login.access-denied") })
+      )
       .finally(() => setProcessingLogin(false));
   };
 
-  const isLoginEmpty = username.length === 0 && password.length === 0;
-
-  useEffect(() => {
-    setIsError(false);
-  }, [username, password]);
+  const errorMessages = Object.values(errors).map(({ message }) => message);
 
   return (
     <StyledLoginWrapper>
@@ -58,30 +65,39 @@ const Login = () => {
         <Avatar>
           <Beer />
         </Avatar>
-        <StyledForm>
+        <StyledForm onSubmit={handleSubmit(handleLogin)}>
           <StyledFormInputContainer>
             <Input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
               placeholder={t("login.username")}
+              {...register("username", {
+                required: {
+                  value: true,
+                  message: t("login.username-required"),
+                },
+              })}
             />
             <Input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               placeholder={t("login.password")}
+              {...register("password", {
+                required: {
+                  value: true,
+                  message: t("login.password-required"),
+                },
+              })}
             />
           </StyledFormInputContainer>
           <StyledFormButtonContainer>
-            {isError && <ErrorMessage>{t("login.access-denied")}</ErrorMessage>}
-            <FormButton
+            <Button
+              type="submit"
               loading={processingLogin}
-              disabled={processingLogin || isError || isLoginEmpty}
-              onClick={handleLogin}
+              disabled={processingLogin}
             >
               {t("login.login")}
-            </FormButton>
+            </Button>
+            {errorMessages.map((message) => (
+              <ErrorMessage key={message}>{message}</ErrorMessage>
+            ))}
           </StyledFormButtonContainer>
         </StyledForm>
       </StyledLogin>
