@@ -3,7 +3,11 @@
     "title": "Ti-medi dispensadores de cervezas",
     "username": "Usuario",
     "password": "Contraseña",
-    "access-denied": "El usuario o la contraseña son incorrectos. Por favor, inténtelo de nuevo",
+    "error": {
+      "access-denied": "El usuario o la contraseña son incorrectos. Por favor, inténtelo de nuevo",
+      "password-required": "No se ha introducido una contraseña válida",
+      "username-required": "No se ha introducido un usuario válido"
+    },
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión"
   },
