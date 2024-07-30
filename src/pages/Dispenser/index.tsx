@@ -1,23 +1,29 @@
-import { useNavigate } from "react-router-dom";
-import { getLoggedUser, logout } from "../../services/login";
-import FormButton from "../../components/Button";
-import { RoutePath } from "../../Routing/routes";
+import { useParams } from "react-router-dom";
+import Button from "../../components/Button";
+import useUpdateDisenser from "../../hooks/useUpdateDispenser";
 
-const DispenserDetail = () => {
-  const user = getLoggedUser();
-  const navigate = useNavigate();
+const Dispenser = () => {
+  const dispenserUpdater = useUpdateDisenser();
+  const { id: dispenserId } = useParams();
 
-  const handleLogout = () => {
-    logout();
-    navigate(RoutePath.LOGIN);
+  const updateDispenser = (status: "open" | "close") => {
+    dispenserUpdater.mutate({
+      id: dispenserId || "",
+      status: status,
+      updated_at: new Date(),
+    });
   };
-
   return (
     <div>
-      Hola {user} Soy un dispensador{" "}
-      <FormButton onClick={handleLogout}>Desloguearse</FormButton>
+      <span>Soy un dispensador con funcionalidad, a que flipas?</span>
+      <Button
+        onMouseDown={() => updateDispenser("open")}
+        onMouseUp={() => updateDispenser("close")}
+      >
+        Actualizar estado
+      </Button>
     </div>
   );
 };
 
-export default DispenserDetail;
+export default Dispenser;

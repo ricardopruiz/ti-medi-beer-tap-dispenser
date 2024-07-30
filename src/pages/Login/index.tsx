@@ -51,7 +51,10 @@ const Login = () => {
         }
       })
       .catch(() =>
-        setError("root", { type: "custom", message: t("login.access-denied") })
+        setError("root", {
+          type: "custom",
+          message: t("login.error.access-denied"),
+        })
       )
       .finally(() => setProcessingLogin(false));
   };
@@ -72,7 +75,7 @@ const Login = () => {
               {...register("username", {
                 required: {
                   value: true,
-                  message: t("login.username-required"),
+                  message: t("login.error.username-required"),
                 },
               })}
             />
@@ -82,7 +85,7 @@ const Login = () => {
               {...register("password", {
                 required: {
                   value: true,
-                  message: t("login.password-required"),
+                  message: t("login.error.password-required"),
                 },
               })}
             />

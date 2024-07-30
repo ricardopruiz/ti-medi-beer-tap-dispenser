@@ -3,7 +3,11 @@
     "title": "Ti-medi beer tap dispensers",
     "username": "Username",
     "password": "Password",
-    "access-denied": "The user or password provided are incorrect. Please try again",
+    "error": {
+      "access-denied": "The user or password provided are incorrect. Please try again",
+      "password-required": "Password is required",
+      "username-required": "Username is required"
+    },
     "login": "Login",
     "logout": "Logout"
   },
