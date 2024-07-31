@@ -12,6 +12,7 @@ const theme = {
     text: {
       default: colors.black,
       contrast: colors.white,
+      accent: colors.orange,
     },
     disabled: {
       main: colors.gray,
@@ -23,6 +24,11 @@ const theme = {
       correct: colors.green,
       info: colors.blue,
       warning: colors.yellow,
+    },
+    background: {
+      default: colors.white,
+      contrast: colors.black,
+      accent: colors.orange,
     },
   },
   breakpoint: {

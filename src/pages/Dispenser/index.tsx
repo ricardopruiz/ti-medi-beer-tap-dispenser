@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import Button from "../../components/Button";
 import useUpdateDisenser from "../../hooks/useUpdateDispenser";
+import DispenserButton from "../../components/DispenserButton";
+import { DispenserContainer } from "./Dispenser.styled";
 
 const Dispenser = () => {
   const dispenserUpdater = useUpdateDisenser();
@@ -14,15 +15,13 @@ const Dispenser = () => {
     });
   };
   return (
-    <div>
-      <span>Soy un dispensador con funcionalidad, a que flipas?</span>
-      <Button
-        onMouseDown={() => updateDispenser("open")}
-        onMouseUp={() => updateDispenser("close")}
-      >
-        Actualizar estado
-      </Button>
-    </div>
+    <DispenserContainer>
+      <DispenserButton
+        loading={dispenserUpdater.isPending}
+        openDispenser={() => updateDispenser("open")}
+        closeDispenser={() => updateDispenser("close")}
+      ></DispenserButton>
+    </DispenserContainer>
   );
 };
 

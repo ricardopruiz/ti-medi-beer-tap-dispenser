@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const AvatarContainer = styled.div`
   width: 11rem;
   height: 11rem;
-  border-radius: 50%;
+  border-radius: ${({ theme }) => theme.borderRadius.round};
   background-color: ${({ theme }) => theme.colors.primary.dark};
   font-size: 8rem;
-  color: white;
+  color: ${({ theme }) => theme.colors.text.contrast};
 
   display: flex;
 
