@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { getLoggedUser, logout } from "../../services/login";
+import { getLoggedUser } from "../../services/login";
 import { RoutePath } from "../../Routing/routes";
 import { DispenserDetail, DispenserList } from "./Dispensers.styled";
 import useAllDispensers from "../../hooks/useAllDispensers";
@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 import useCreateDispenser from "../../hooks/useCreateDispenser";
 import StyledInput from "../../components/Input";
 import { useState } from "react";
+import Topbar from "../../components/Topbar";
 
 const Dispensers = () => {
   const [newVolume, setNewVolume] = useState<string>();
@@ -16,11 +17,6 @@ const Dispensers = () => {
 
   const dispenserCreator = useCreateDispenser();
   const loggedUser = getLoggedUser();
-
-  const handleLogout = () => {
-    logout();
-    navigate(RoutePath.LOGIN);
-  };
 
   const openDispenserDetail = (id: Dispenser["id"]) => {
     navigate(`${RoutePath.ADMIN_DISPENSERS}/${id}`);
@@ -32,6 +28,7 @@ const Dispensers = () => {
 
   return (
     <div>
+      <Topbar />
       {`Hola ${loggedUser} Soy la página de dispensers`}
       <div>
         <StyledInput
@@ -40,7 +37,6 @@ const Dispensers = () => {
         />
         <Button onClick={createDispenser}>Crear dispenser</Button>
       </div>
-      <Button onClick={handleLogout}>Desloguearse</Button>
       {isLoading && <div>cargando</div>}
       {isError && <div>Error</div>}
 

@@ -7,7 +7,7 @@ import englishTranslations from "./locales/en-UK/translation.json";
 
 const resources = {
   "es-ES": { translation: spanishTranslations },
-  "en-EN": { translation: englishTranslations },
+  "en-UK": { translation: englishTranslations },
 };
 
 i18n
