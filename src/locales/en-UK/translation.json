@@ -12,6 +12,13 @@
     "logout": "Logout"
   },
   "dispensers": {
-    "create-dispenser": "Create new Beer Dispenser"
+    "admin-title": "Dispensers Administration",
+    "create-dispenser": "New Dispenser",
+    "new-flow": "New Flow",
+    "status": "Status",
+    "last-activity": "Last activity",
+    "actions": "Actions",
+    "status-open": "Open",
+    "status-close": "Close"
   }
 }

@@ -12,6 +12,13 @@
     "logout": "Cerrar sesión"
   },
   "dispensers": {
-    "create-dispenser": "Crear nuevo dispensador de cerveza"
+    "admin-title": "Administración de Dispensadores",
+    "create-dispenser": "Nuevo dispensador",
+    "new-flow": "Nuevo flujo",
+    "status": "Estado",
+    "last-activity": "Último uso",
+    "actions": "Acciones",
+    "status-open": "Abierto",
+    "status-close": "Cerrado"
   }
 }
