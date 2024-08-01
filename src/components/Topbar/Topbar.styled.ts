@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const StyledTopbar = styled.div`
   display: grid;
   grid-template-columns: min-content 1fr auto;
-  height: 4rem;
   gap: 1rem;
 
-  padding: 0 1rem;
+  padding: 1rem 1rem;
 
   align-items: center;
   justify-items: right;

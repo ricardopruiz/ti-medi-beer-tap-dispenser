@@ -9,7 +9,7 @@ export const DispenserContainer = styled.div`
 
   user-select: none;
 
-  background-color: ${({ theme }) => theme.colors.primary.dark};
+  background-color: ${({ theme }) => theme.colors.primary.main};
 `;
 
 export const StyledDispenser = styled.div``;
