@@ -9,6 +9,8 @@
     }
   ],
   "compilerOptions": {
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }

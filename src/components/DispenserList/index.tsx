@@ -1,62 +1,59 @@
 import { useTranslation } from "react-i18next";
 import { Dispenser } from "../../types/dispenser.types";
-import { DispensersTable, DispenserTableWrapper } from "./DispenserList.styled";
 import EyeIcon from "../Icons/EyeIcon";
 import Button from "../Button";
+import { TableColumnData, TableRowData } from "../Table/Table.types";
+import { formatDate } from "../../utils/formatData";
+import Table from "../Table";
 
 type DispenserListProps = {
-  adminMode?: boolean;
   dispensers: Dispenser[];
   handleDispenserDetail?(dispenserID: string): void;
 };
 
 const DispenserList = ({
-  adminMode = false,
   dispensers,
   handleDispenserDetail = () => {},
 }: DispenserListProps) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  const formatDate = (date: Date) => {
-    return new Date(date).toLocaleString(i18n.language, {
-      year: "2-digit",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
+  const columns: TableColumnData[] = [
+    { key: "uuid", label: "UUID", align: "left" },
+    { key: "status", label: t("dispensers.status"), align: "right" },
+    {
+      key: "lastActivity",
+      label: t("dispensers.last-activity"),
+      align: "right",
+    },
+    { key: "actions", label: t("dispensers.actions"), align: "center" },
+  ];
 
-  return (
-    <DispenserTableWrapper>
-      <DispensersTable>
-        <thead>
-          <tr>
-            <th>UUID</th>
-            <th>{t("dispensers.status")}</th>
-            <th>{t("dispensers.last-activity")}</th>
-            {adminMode && <th>{t("dispensers.actions")}</th>}
-          </tr>
-        </thead>
-        <tbody>
-          {dispensers.map((dispenser) => (
-            <tr key={dispenser.id}>
-              <td>{dispenser.id}</td>
-              <td>{t(`dispensers.status-${dispenser.status}`)}</td>
-              <td>{formatDate(dispenser.updated_at)}</td>
-              {adminMode && (
-                <td>
-                  <Button onClick={() => handleDispenserDetail(dispenser.id)}>
-                    <EyeIcon />
-                  </Button>
-                </td>
-              )}
-            </tr>
-          ))}
-        </tbody>
-      </DispensersTable>
-    </DispenserTableWrapper>
-  );
+  const dispensersList: TableRowData[] = dispensers.map((dispenser) => {
+    return [
+      {
+        key: "uuid",
+        value: dispenser.id,
+      },
+      {
+        key: "status",
+        value: t(`dispensers.status-${dispenser.status}`),
+      },
+      {
+        key: "lastActivity",
+        value: formatDate(dispenser.updated_at),
+      },
+      {
+        key: "actions",
+        value: (
+          <Button onClick={() => handleDispenserDetail(dispenser.id)}>
+            <EyeIcon />
+          </Button>
+        ),
+      },
+    ];
+  });
+
+  return <Table columns={columns} rows={dispensersList} />;
 };
 
 export default DispenserList;

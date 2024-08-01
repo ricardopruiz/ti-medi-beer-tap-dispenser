@@ -10,7 +10,11 @@ type ButtonProps = {
 const Button = ({ loading = false, children, ...props }: ButtonProps) => {
   return (
     <StyledButton {...props}>
-      {loading ? <LoadingSpinner type="innerSpinner" /> : children}
+      {loading ? (
+        <LoadingSpinner type="innerSpinner" color="white" />
+      ) : (
+        children
+      )}
     </StyledButton>
   );
 };

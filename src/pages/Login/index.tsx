@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import Input from "../../components/Input";
 import { useState } from "react";
 import {
+  LangSelectorContainer,
   StyledForm,
   StyledFormButtonContainer,
   StyledFormInputContainer,
@@ -18,6 +19,7 @@ import Avatar from "../../components/Avatar";
 import Beer from "../../components/Icons/BeerIcon";
 import useBreakpoints from "../../hooks/useBreakpoints";
 import { SubmitHandler, useForm } from "react-hook-form";
+import LanguageSelector from "../../components/LanguageSelector";
 
 type FormData = {
   username: string;
@@ -34,9 +36,7 @@ const Login = () => {
   const { t } = useTranslation();
   const { isDesktop } = useBreakpoints();
   const navigate = useNavigate();
-
   const { state: locationState } = useLocation();
-
   const [processingLogin, setProcessingLogin] = useState(false);
 
   const handleLogin: SubmitHandler<FormData> = ({ username, password }) => {
@@ -63,6 +63,9 @@ const Login = () => {
 
   return (
     <StyledLoginWrapper>
+      <LangSelectorContainer>
+        <LanguageSelector />
+      </LangSelectorContainer>
       {isDesktop && <StyledVerticalBlock />}
       <StyledLogin>
         <Avatar>

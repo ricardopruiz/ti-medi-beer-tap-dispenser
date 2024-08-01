@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const DispenserTableWrapper = styled.div`
+export const StyledTableWrapper = styled.div`
   width: 100%;
   overflow-y: scroll;
 `;
 
-export const DispensersTable = styled.table`
+export const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
 
@@ -16,7 +16,6 @@ export const DispensersTable = styled.table`
 
     th {
       padding: 1rem;
-      text-align: left;
       color: ${({ theme }) => theme.colors.text.contrast};
       font-weight: bold;
     }
@@ -32,20 +31,10 @@ export const DispensersTable = styled.table`
     td {
       padding: 0.5rem;
       white-space: nowrap;
-      &:first-child {
-        width: 100%;
-      }
 
       &:not(:first-child) {
         width: fit-content;
         padding-left: 1rem;
-      }
-
-      &:last-child {
-        display: flex;
-        width: auto;
-        justify-content: center;
-        gap: 0.5rem;
       }
     }
   }
