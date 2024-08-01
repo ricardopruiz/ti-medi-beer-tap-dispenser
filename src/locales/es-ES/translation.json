@@ -20,5 +20,18 @@
     "actions": "Acciones",
     "status-open": "Abierto",
     "status-close": "Cerrado"
+  },
+  "dispenser-detail": {
+    "operating-time": "Tiempo Operativo",
+    "time-opened": "Tiempo abierto",
+    "flow-volume": "Flujo",
+    "liters-served": "Litros serv.",
+    "total-spent": "Total",
+    "amount": "Total servido",
+    "total-uses": "Total utilizado",
+    "total-time": "Total tiempo"
+  },
+  "general": {
+    "seconds": "segundos"
   }
 }

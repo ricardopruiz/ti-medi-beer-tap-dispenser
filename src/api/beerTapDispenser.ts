@@ -1,27 +1,25 @@
-import { Dispenser } from "../types/dispenser.types";
+import { Dispenser, DispenserDetails } from "../types/dispenser.types";
 
 const BASE_URL = "http://localhost:8002/api";
 
-export const getDispenser = (id: Dispenser["id"]) => {
-  return fetch(`${BASE_URL}/dispenser/${id}`)
+const request = (endpoint: string, init?: RequestInit) =>
+  fetch(`${BASE_URL}${endpoint}`, init)
     .then((res) => {
-      if (res.status == 422)
-        throw new Error(`ERROR ${res.status}: ${res.statusText}`);
+      if (!res.ok) throw new Error(`ERROR ${res.status}: ${res.statusText}`);
       return res.json();
     })
     .catch((error) => {
       throw new Error(error);
     });
+
+export const getDispenser = (
+  id: Dispenser["id"]
+): Promise<DispenserDetails> => {
+  return request(`/dispenser/${id}`);
 };
 
-export const getAllDispensers = () => {
-  return fetch(`${BASE_URL}/dispenser`)
-    .then((res) => {
-      return res.json();
-    })
-    .catch((error) => {
-      throw new Error(error);
-    });
+export const getAllDispensers = (): Promise<Dispenser[]> => {
+  return request("/dispenser");
 };
 
 export const updateDispenserStatus = ({
@@ -31,39 +29,23 @@ export const updateDispenserStatus = ({
 }: Dispenser) => {
   const body = { status, updated_at };
 
-  return fetch(`${BASE_URL}/dispenser/${id}`, {
+  return request(`/dispenser/${id}`, {
     method: "put",
     body: JSON.stringify(body),
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then((res) => {
-      if (res.status == 422)
-        throw new Error(`ERROR ${res.status}: ${res.statusText}`);
-      return res.json();
-    })
-    .catch((error) => {
-      throw new Error(error);
-    });
+  });
 };
 
 export const createDispenser = ({ flowVolume }: { flowVolume: number }) => {
   const body = { flow_volume: flowVolume };
 
-  return fetch(`${BASE_URL}/dispenser`, {
+  return request("/dispenser", {
     method: "post",
     body: JSON.stringify(body),
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then((res) => {
-      if (res.status == 422)
-        throw new Error(`ERROR ${res.status}: ${res.statusText}`);
-      return res.json();
-    })
-    .catch((error) => {
-      throw new Error(error);
-    });
+  });
 };

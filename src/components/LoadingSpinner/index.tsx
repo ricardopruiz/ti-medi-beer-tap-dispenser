@@ -1,13 +1,14 @@
 import { StyledIcon, StyledLoading } from "./LoadingSpinner.styled";
 
 export type LoadingSpinnerProps = {
-  type?: "innerSpinner" | "pageSpinner";
+  type: "innerSpinner" | "pageSpinner";
+  color: "white" | "black" | "accent";
 };
 
-const LoadingSpinner = ({ type = "innerSpinner" }: LoadingSpinnerProps) => {
+const LoadingSpinner = ({ type, color }: LoadingSpinnerProps) => {
   return (
     <StyledLoading aria-label="loading-spinner-container">
-      <StyledIcon type={type} />
+      <StyledIcon type={type} color={color} />
     </StyledLoading>
   );
 };

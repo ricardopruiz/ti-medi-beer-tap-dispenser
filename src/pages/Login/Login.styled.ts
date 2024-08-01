@@ -1,12 +1,20 @@
 import styled from "styled-components";
 
 export const StyledLoginWrapper = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
   height: 100vh;
 
   align-items: center;
   justify-content: center;
+`;
+
+export const LangSelectorContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
 `;
 
 export const StyledVerticalBlock = styled.div`

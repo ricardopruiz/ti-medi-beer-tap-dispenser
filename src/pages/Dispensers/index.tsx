@@ -1,17 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { RoutePath } from "../../Routing/routes";
-import {
-  DispenserAdminSectionTitle,
-  DispensersAdminSection,
-  DispensersWrapper,
-  PageLayout,
-} from "./Dispensers.styled";
+import { DispensersAdminSection } from "./Dispensers.styled";
 import useAllDispensers from "../../hooks/useAllDispensers";
 import { Dispenser } from "../../types/dispenser.types";
 import Topbar from "../../components/Topbar";
 import DispenserList from "../../components/DispenserList";
 import DispenserCreator from "../../components/DispenserCreator";
 import { useTranslation } from "react-i18next";
+import { PageContentWrapper, PageLayout, PageTitle } from "../Pages.styled";
+import LoadingSpinner from "../../components/LoadingSpinner";
+import ErrorComponent from "../../components/ErrorComponent";
 
 const Dispensers = () => {
   const { isLoading, isError, data: dispensers } = useAllDispensers();
@@ -22,25 +20,23 @@ const Dispensers = () => {
     navigate(`${RoutePath.ADMIN_DISPENSERS}/${id}`);
   };
 
-  if (isLoading) return <div>cargando</div>;
-  if (isError) return <div>error</div>;
-
   return (
     <PageLayout>
       <Topbar />
-      <DispensersWrapper>
+      <PageContentWrapper>
         <DispensersAdminSection>
-          <DispenserAdminSectionTitle>
-            {t("dispensers.admin-title")}
-          </DispenserAdminSectionTitle>
+          <PageTitle>{t("dispensers.admin-title")}</PageTitle>
           <DispenserCreator />
         </DispensersAdminSection>
-        <DispenserList
-          dispensers={dispensers}
-          adminMode
-          handleDispenserDetail={(id: string) => openDispenserDetail(id)}
-        />
-      </DispensersWrapper>
+        {isLoading && <LoadingSpinner color="accent" type="pageSpinner" />}
+        {isError && <ErrorComponent />}
+        {!isLoading && !isError && (
+          <DispenserList
+            dispensers={dispensers || []}
+            handleDispenserDetail={(id: string) => openDispenserDetail(id)}
+          />
+        )}
+      </PageContentWrapper>
     </PageLayout>
   );
 };

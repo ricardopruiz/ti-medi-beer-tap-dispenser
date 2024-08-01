@@ -20,5 +20,15 @@
     "actions": "Actions",
     "status-open": "Open",
     "status-close": "Close"
+  },
+  "dispenser-detail": {
+    "operating-time": "Operating Time",
+    "time-opened": "Time Opened",
+    "flow-volume": "Flow",
+    "liters-served": "Liters serv.",
+    "total-spent": "Total",
+    "amount": "Total served",
+    "total-uses": "Total uses",
+    "total-time": "Total time"
   }
 }

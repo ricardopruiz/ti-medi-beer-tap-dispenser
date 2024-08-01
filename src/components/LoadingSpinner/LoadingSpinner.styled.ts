@@ -1,9 +1,21 @@
 import styled from "styled-components";
 import LoadingSpinnerIcon from "../Icons/LoadingSpinnerIcon";
 import { LoadingSpinnerProps } from ".";
+import { DefaultTheme } from "styled-components/dist/types";
 
 type StyledIconProps = {
   type: LoadingSpinnerProps["type"];
+  color: LoadingSpinnerProps["color"];
+};
+
+const getColor = (color: LoadingSpinnerProps["color"], theme: DefaultTheme) => {
+  const colors: Record<LoadingSpinnerProps["color"], string> = {
+    black: theme.colors.text.default,
+    accent: theme.colors.text.accent,
+    white: theme.colors.text.contrast,
+  };
+
+  return colors[color];
 };
 
 export const StyledLoading = styled.div.attrs({
@@ -18,8 +30,8 @@ export const StyledLoading = styled.div.attrs({
 `;
 
 export const StyledIcon = styled(LoadingSpinnerIcon)<StyledIconProps>`
-  font-size: ${({ type }) => (type === "innerSpinner" ? "1rem" : "4rem")};
-  color: ${({ theme }) => theme.colors.text.contrast};
+  font-size: ${({ type }) => (type === "innerSpinner" ? "1rem" : "7rem")};
+  color: ${({ theme, color }) => getColor(color, theme)};
 
   animation: spin 500ms linear infinite;
 

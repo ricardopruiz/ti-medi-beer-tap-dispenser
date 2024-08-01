@@ -4,22 +4,26 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import spanishTranslations from "./locales/es-ES/translation.json";
 import englishTranslations from "./locales/en-UK/translation.json";
+import dayjs from "dayjs";
+import "dayjs/locale/es";
+import "dayjs/locale/en";
 
 const resources = {
-  "es-ES": { translation: spanishTranslations },
-  "en-UK": { translation: englishTranslations },
+  es: { translation: spanishTranslations },
+  en: { translation: englishTranslations },
 };
 
 i18n
   // detect user language
-  // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
   // pass the i18n instance to react-i18next.
   .use(initReactI18next)
   // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     resources,
   });
+
+// init dayjs with the language i18n detected
+dayjs.locale(i18n.language);
 
 export default i18n;
