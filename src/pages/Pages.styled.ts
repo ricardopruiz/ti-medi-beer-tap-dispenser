@@ -31,3 +31,10 @@ export const PageContentWrapper = styled.div`
     padding: 3rem;
   }
 `;
+
+export const LangSelectorContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+`;

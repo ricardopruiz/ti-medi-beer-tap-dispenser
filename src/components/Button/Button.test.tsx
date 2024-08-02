@@ -8,21 +8,22 @@ import "@testing-library/jest-dom";
 import Button from ".";
 
 describe("Button", () => {
-  it("shows a form button", () => {
+  it("shows a button", () => {
     render(<Button onClick={vi.fn()}>test</Button>);
 
     const button = screen.getByRole("button");
     expect(button).toBeInTheDocument();
   });
 
-  it("calls a callback when button is clicked", async () => {
+  it("calls the callback when button is clicked", async () => {
     const callback = vi.fn();
     render(<Button onClick={callback}>test</Button>);
 
     const button = screen.getByRole("button");
 
+    userEvent.click(button);
+
     await waitFor(() => {
-      userEvent.click(button);
       expect(callback).toHaveBeenCalled();
     });
   });

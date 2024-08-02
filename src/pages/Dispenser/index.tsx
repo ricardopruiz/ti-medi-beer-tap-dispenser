@@ -17,7 +17,6 @@ const Dispenser = () => {
   return (
     <DispenserContainer>
       <DispenserButton
-        loading={dispenserUpdater.isPending}
         openDispenser={() => updateDispenser("open")}
         closeDispenser={() => updateDispenser("close")}
       ></DispenserButton>

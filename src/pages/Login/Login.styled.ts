@@ -10,17 +10,24 @@ export const StyledLoginWrapper = styled.div`
   justify-content: center;
 `;
 
-export const LangSelectorContainer = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 1rem;
-`;
-
 export const StyledVerticalBlock = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.primary.main};
+`;
+
+export const IconContainer = styled.div`
+  width: 11rem;
+  height: 11rem;
+  border-radius: ${({ theme }) => theme.borderRadius.round};
+  background-color: ${({ theme }) => theme.colors.primary.main};
+  font-size: 8rem;
+  color: ${({ theme }) => theme.colors.text.contrast};
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledLogin = styled.div`

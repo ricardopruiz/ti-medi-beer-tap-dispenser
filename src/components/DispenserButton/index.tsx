@@ -3,7 +3,6 @@ import BeerIcon from "../Icons/BeerIcon";
 import { StyledDispenserButton } from "./DispenserButton.styled";
 
 type DispenserButtonProps = {
-  loading: boolean;
   openDispenser(): void;
   closeDispenser(): void;
 };

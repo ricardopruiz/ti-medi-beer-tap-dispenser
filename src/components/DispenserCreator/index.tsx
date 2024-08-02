@@ -8,11 +8,12 @@ import { DispenserCreatorWrapper } from "./DispenserCreator.styled";
 const DispenserCreator = () => {
   const { t } = useTranslation();
   const [newVolume, setNewVolume] = useState<string>("");
+  const dispenserCreator = useCreateDispenser();
+
   const createDispenser = () => {
     dispenserCreator.mutate({ flowVolume: Number(newVolume) });
   };
 
-  const dispenserCreator = useCreateDispenser();
   return (
     <DispenserCreatorWrapper>
       <StyledInput

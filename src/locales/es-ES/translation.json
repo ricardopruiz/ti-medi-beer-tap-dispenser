@@ -11,6 +11,9 @@
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión"
   },
+  "public-dispensers": {
+    "title": "Dispensadores"
+  },
   "dispensers": {
     "admin-title": "Administración de Dispensadores",
     "create-dispenser": "Nuevo dispensador",
@@ -30,8 +33,5 @@
     "amount": "Total servido",
     "total-uses": "Total utilizado",
     "total-time": "Total tiempo"
-  },
-  "general": {
-    "seconds": "segundos"
   }
 }
