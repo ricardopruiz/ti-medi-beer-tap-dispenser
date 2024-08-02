@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import useUpdateDisenser from "../../hooks/useUpdateDispenser";
 import DispenserButton from "../../components/DispenserButton";
 import { DispenserContainer } from "./Dispenser.styled";
+import useDispenser from "../../hooks/useDispenser";
+import ErrorComponent from "../../components/ErrorComponent";
 
 const Dispenser = () => {
   const dispenserUpdater = useUpdateDisenser();
@@ -14,13 +16,23 @@ const Dispenser = () => {
       updated_at: new Date(),
     });
   };
+
+  const { isError, isLoading } = useDispenser(dispenserId!);
+
   return (
-    <DispenserContainer>
-      <DispenserButton
-        openDispenser={() => updateDispenser("open")}
-        closeDispenser={() => updateDispenser("close")}
-      ></DispenserButton>
-    </DispenserContainer>
+    <>
+      {isError ? (
+        <ErrorComponent />
+      ) : (
+        <DispenserContainer>
+          <DispenserButton
+            openDispenser={() => updateDispenser("open")}
+            closeDispenser={() => updateDispenser("close")}
+            isLoading={isLoading}
+          ></DispenserButton>
+        </DispenserContainer>
+      )}
+    </>
   );
 };
 
