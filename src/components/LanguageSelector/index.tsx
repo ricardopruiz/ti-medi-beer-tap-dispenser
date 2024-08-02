@@ -11,6 +11,11 @@ export type LanguageSelectorProps = {
   colorVariant?: "primary" | "contrast";
 };
 
+/**
+ * The language selector of the app. It can be inserted on
+ * any part without props, making possible to change the
+ * selected language easily
+ */
 const LanguageSelector = ({
   colorVariant = "primary",
 }: LanguageSelectorProps) => {
