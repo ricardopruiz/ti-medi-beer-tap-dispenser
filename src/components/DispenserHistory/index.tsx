@@ -15,6 +15,11 @@ type DispenserHistoryProps = {
 
 const DispenserHistory = ({ dispenserHistory }: DispenserHistoryProps) => {
   const { t, i18n } = useTranslation();
+  /**
+   * We get the time opened on milliseconds instead of seconds directly from dayjs because
+   * dayjs provides the seconds rounded with ceiling, so we get more precission taking milliseconds
+   * and then divide it per 1000
+   */
   const getSecondsOpened = (openedTime: Date, closedTime: Date) => {
     return dayjs(closedTime).diff(openedTime, "milliseconds") / 1000;
   };

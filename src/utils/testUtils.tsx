@@ -1,6 +1,10 @@
 import { render, RenderOptions } from "@testing-library/react";
 import Providers from "../Providers";
 
+/**
+ * Here we are configuring vitest in order to use the
+ * providers of the application while render a component
+ */
 import { ReactElement } from "react";
 const customRender = (
   ui: ReactElement,

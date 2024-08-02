@@ -24,7 +24,7 @@ npm run dev
 To check testing running, use
 
 ```
-npm test
+npm run test
 ```
 
 And to generate a coverage test list, you can use
@@ -45,13 +45,13 @@ This project has two separate zones, the public and the admin one.
 
 `/dispenser/:id` Shows the dispenser. You can hold the button to serve your beer!
 
-### Private Routes
+`/admin/login` Here you can make login to the application.
+
+### Protected Routes
 
 `/admin` Here is the admin dispenser list, where you can see the dispensers created, theis status, and you can access to a detailed view of that dispensers (the eye button in actions) or open that dispenser directly (the beer button). Also, you can create a new dispenser providing its flow. The endpoint is automatically refreshed to see how users are using the dispensers "in real time", just like the public page.
 
 `/admin/dispenser/:id` This is the detailed view of a beer dispenser. You can see all the interactions of the users, how much is that interactions and the total time that dispenser has been serving beer.
-
-`/admin/login` Here you can make login to the application.
 
 ## How to login
 

@@ -2,6 +2,7 @@ import { Dispenser, DispenserDetails } from "../types/dispenser.types";
 
 const BASE_URL = "http://localhost:8002/api";
 
+// this function helps to reuse code, because all the petitions are very similar
 const request = (endpoint: string, init?: RequestInit) =>
   fetch(`${BASE_URL}${endpoint}`, init)
     .then((res) => {

@@ -46,6 +46,9 @@ const DispenserList = ({
         key: "lastActivity",
         value: formatDate(dispenser.updated_at),
       },
+      /**
+       * This column inserts on the table buttons to provide more details about the dispenser or to open that dispenser
+       */
       {
         key: "actions",
         value: (
