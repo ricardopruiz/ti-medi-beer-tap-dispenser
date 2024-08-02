@@ -33,5 +33,9 @@
     "amount": "Total servido",
     "total-uses": "Total utilizado",
     "total-time": "Total tiempo"
+  },
+  "dispenser": {
+    "isOpen": "Sirviendo...",
+    "isClose": "Mantén pulsado para servir"
   }
 }

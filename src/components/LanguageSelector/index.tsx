@@ -7,7 +7,13 @@ import dayjs from "dayjs";
 import "dayjs/locale/es";
 import "dayjs/locale/en";
 
-const LanguageSelector = () => {
+export type LanguageSelectorProps = {
+  colorVariant?: "primary" | "contrast";
+};
+
+const LanguageSelector = ({
+  colorVariant = "primary",
+}: LanguageSelectorProps) => {
   const { i18n } = useTranslation();
   const availableLanguages = Object.keys(i18n.store.data);
   const handleChangeLanguage = (newLanguage: string) => {
@@ -21,6 +27,7 @@ const LanguageSelector = () => {
     <LanguageSelectorContainer>
       {availableLanguages.map((lang) => (
         <LanguageSelectorItem
+          variant={colorVariant}
           key={lang}
           $isSelected={isLanguageSelected(lang)}
           onClick={() => handleChangeLanguage(lang)}

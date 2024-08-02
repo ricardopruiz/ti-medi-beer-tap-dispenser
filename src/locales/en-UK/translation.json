@@ -32,5 +32,9 @@
     "amount": "Total served",
     "total-uses": "Total uses",
     "total-time": "Total time"
+  },
+  "dispenser": {
+    "isOpen": "Serving...",
+    "isClose": "Hold to serve"
   }
 }
