@@ -2,8 +2,6 @@ import { useTranslation } from "react-i18next";
 import { formatCurrency } from "../../utils/formatData";
 import { DispenserDetails } from "../../types/dispenser.types";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import duration from "dayjs/plugin/duration";
 import DispenserTotal from "../DispenserTotal";
 import { DispenserTotals } from "./DispenserDataVisualizer.styled";
 import DispenserHistory from "../DispenserHistory";
@@ -16,9 +14,6 @@ const DispenserDataVisualizer = ({ data }: DispenserDataVisualizerProps) => {
   const { t, i18n } = useTranslation();
 
   const totalTimeUsed = () => {
-    dayjs.extend(duration);
-    dayjs.extend(utc);
-
     const timeUsedPerService = data?.usages
       .filter(({ closed_at, opened_at }) => closed_at && opened_at)
       .map((service) =>

@@ -5,15 +5,19 @@ import Button from "../Button";
 import { TableColumnData, TableRowData } from "../Table/Table.types";
 import { formatDate } from "../../utils/formatData";
 import Table from "../Table";
+import BeerIcon from "../Icons/BeerIcon";
+import { ActionButtons } from "./DispenserList.styled";
 
 type DispenserListProps = {
   dispensers: Dispenser[];
   handleDispenserDetail?(dispenserID: string): void;
+  handleOpenDispenser?(dispenserID: string): void;
 };
 
 const DispenserList = ({
   dispensers,
   handleDispenserDetail = () => {},
+  handleOpenDispenser = () => {},
 }: DispenserListProps) => {
   const { t } = useTranslation();
 
@@ -45,9 +49,14 @@ const DispenserList = ({
       {
         key: "actions",
         value: (
-          <Button onClick={() => handleDispenserDetail(dispenser.id)}>
-            <EyeIcon />
-          </Button>
+          <ActionButtons>
+            <Button onClick={() => handleDispenserDetail(dispenser.id)}>
+              <EyeIcon />
+            </Button>
+            <Button onClick={() => handleOpenDispenser(dispenser.id)}>
+              <BeerIcon />
+            </Button>
+          </ActionButtons>
         ),
       },
     ];

@@ -20,8 +20,17 @@ const Dispensers = lazy(() => import("../pages/Dispensers"));
 const DispenserDetail = lazy(() => import("../pages/DispenserDetail"));
 const Dispenser = lazy(() => import("../pages/Dispenser"));
 const Error404 = lazy(() => import("../pages/Error404"));
+const PublicDispensers = lazy(() => import("../pages/PublicDispensers"));
 
 const routes = [
+  {
+    path: RoutePath.DISPENSER_LIST,
+    element: (
+      <Suspense fallback={<LoadingSpinner type="pageSpinner" color="accent" />}>
+        <PublicDispensers />
+      </Suspense>
+    ),
+  },
   {
     path: RoutePath.LOGIN,
     element: (

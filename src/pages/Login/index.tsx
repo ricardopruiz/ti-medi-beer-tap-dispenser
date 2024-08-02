@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import Input from "../../components/Input";
 import { useState } from "react";
 import {
-  LangSelectorContainer,
+  IconContainer,
   StyledForm,
   StyledFormButtonContainer,
   StyledFormInputContainer,
@@ -15,11 +15,11 @@ import { loginUser } from "../../services/login";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useLocation, useNavigate } from "react-router-dom";
 import { RoutePath } from "../../Routing/routes";
-import Avatar from "../../components/Avatar";
-import Beer from "../../components/Icons/BeerIcon";
+import BeerIcon from "../../components/Icons/BeerIcon";
 import useBreakpoints from "../../hooks/useBreakpoints";
 import { SubmitHandler, useForm } from "react-hook-form";
 import LanguageSelector from "../../components/LanguageSelector";
+import { LangSelectorContainer } from "../Pages.styled";
 
 type FormData = {
   username: string;
@@ -68,9 +68,9 @@ const Login = () => {
       </LangSelectorContainer>
       {isDesktop && <StyledVerticalBlock />}
       <StyledLogin>
-        <Avatar>
-          <Beer />
-        </Avatar>
+        <IconContainer>
+          <BeerIcon />
+        </IconContainer>
         <StyledForm onSubmit={handleSubmit(handleLogin)}>
           <StyledFormInputContainer>
             <Input

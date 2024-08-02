@@ -1,6 +1,5 @@
 {
   "login": {
-    "title": "Ti-medi beer tap dispensers",
     "username": "Username",
     "password": "Password",
     "error": {
@@ -10,6 +9,9 @@
     },
     "login": "Login",
     "logout": "Logout"
+  },
+  "public-dispensers": {
+    "title": "Dispensers"
   },
   "dispensers": {
     "admin-title": "Dispensers Administration",

@@ -20,6 +20,10 @@ const Dispensers = () => {
     navigate(`${RoutePath.ADMIN_DISPENSERS}/${id}`);
   };
 
+  const openDispenser = (id: Dispenser["id"]) => {
+    window.open(`${window.location.origin}/dispenser/${id}`, "_blank");
+  };
+
   return (
     <PageLayout>
       <Topbar />
@@ -34,6 +38,7 @@ const Dispensers = () => {
           <DispenserList
             dispensers={dispensers || []}
             handleDispenserDetail={(id: string) => openDispenserDetail(id)}
+            handleOpenDispenser={(id: string) => openDispenser(id)}
           />
         )}
       </PageContentWrapper>
