@@ -57,7 +57,7 @@ This project has two separate zones, the public and the admin one.
 
 If you try to enter to a private route, you will be redirected into the login page if you are not logged before.
 
-A valid user and password is any word in both cases, but the password will be incorrect if you enter an `_`.
+A valid user and password is any word in both cases, but the password will be incorrect if you enter an `_`, in order to have an example of unsuccesful login
 
 After a successful login, you will be redirected again to the page that you tried to visit afer. If you went directly to the login page, you will go to the `/admin` page.
 
